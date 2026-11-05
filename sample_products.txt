@@ -1,0 +1,15 @@
+PRODUCT: HP EliteBook Laptop
+Category: Electronics
+Price: 850 USD
+Availability: In Stock
+Warranty: 1 Year
+
+PRODUCT: Wireless Mouse
+Category: Accessories
+Price: 25 USD
+Availability: In Stock
+Warranty: 6 Months
+
+RETURN POLICY:
+Customers can return eligible products within 30 days of purchase.
+Products must be returned in their original condition.

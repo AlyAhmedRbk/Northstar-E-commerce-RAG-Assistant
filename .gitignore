@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment
+.venv/
+.env
+
+# Uploaded and indexed data
+data/uploads/*
+data/chroma/*
+
+# Logs
+logs/*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Local vector database and runtime files
+data/chroma/
+data/uploads/
+logs/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/

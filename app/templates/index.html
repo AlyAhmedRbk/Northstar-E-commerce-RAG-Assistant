@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8fa">
+    <meta name="description" content="Discover useful technology and get instant shopping support from Northstar.">
+    <title>Northstar — Technology for everyday life</title>
+    <script>
+        (() => {
+            try {
+                const saved = localStorage.getItem("northstar-theme");
+                const theme = saved === "dark" || saved === "light"
+                    ? saved
+                    : "light";
+                document.documentElement.dataset.theme = theme;
+            } catch (_) {
+                document.documentElement.dataset.theme = "light";
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/chat.js') }}" defer></script>
+</head>
+<body>
+    <div class="announcement">
+        <p>Thoughtful technology. A simpler everyday.</p>
+        <span>Need a hand? Our shopping assistant is here to help.</span>
+    </div>
+
+    <header class="site-header">
+        <a class="brand" href="#home" aria-label="Northstar home">
+            <span class="brand-symbol">N</span>
+            <span class="brand-name">northstar<span>.</span></span>
+        </a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <a class="nav-link active" href="#home">Home</a>
+            <a class="nav-link" href="#products">Shop</a>
+            <a class="nav-link" href="#why-northstar">About</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="icon-button theme-toggle" id="theme-toggle"
+                    type="button" aria-label="Switch to dark mode"
+                    aria-pressed="false" title="Change theme">
+                <span class="theme-icon" aria-hidden="true">☾</span>
+            </button>
+            <button class="header-chat-button" id="header-help" type="button">
+                <span aria-hidden="true">✦</span> Ask Northstar
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-copy">
+                <div class="eyebrow"><span class="eyebrow-dot"></span> THE NORTHSTAR COLLECTION</div>
+                <h1>Technology that<br>moves life <span>forward.</span></h1>
+                <p class="hero-description">
+                    Discover practical technology for work, creativity, and everyday life.
+                    Find your next essential and get helpful answers along the way.
+                </p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#products">Explore the collection <span>↗</span></a>
+                    <button class="button button-quiet" id="hero-chat" type="button">
+                        Talk to our assistant <span>✦</span>
+                    </button>
+                </div>
+                <div class="hero-trust">
+                    <span class="trust-mark">✦</span>
+                    <span>Product guidance and store information, whenever you need it.</span>
+                </div>
+            </div>
+
+            <div class="hero-art" aria-label="Featured laptop product illustration">
+                <div class="hero-art-glow"></div>
+                <div class="hero-orbit hero-orbit-one"></div>
+                <div class="hero-orbit hero-orbit-two"></div>
+                <div class="hero-product-card">
+                    <div class="hero-card-top">
+                        <span>FEATURED THIS SEASON</span>
+                        <span class="hero-card-index">01 — 10</span>
+                    </div>
+                    <div class="hero-laptop">
+                        <div class="hero-laptop-screen">
+                            <div class="screen-shape"></div>
+                            <div class="screen-caption">NORTHSTAR</div>
+                        </div>
+                        <div class="hero-laptop-base"></div>
+                    </div>
+                    <div class="hero-card-bottom">
+                        <div>
+                            <span class="mini-label">WORK & PRODUCTIVITY</span>
+                            <h3>HP EliteBook Laptop</h3>
+                        </div>
+                        <strong>$850</strong>
+                    </div>
+                </div>
+                <div class="hero-floating-note">
+                    <span class="floating-note-icon">✦</span>
+                    <span><strong>A little help goes a long way</strong><small>Meet your AI shopping assistant</small></span>
+                </div>
+                <span class="hero-decoration hero-decoration-one"></span>
+                <span class="hero-decoration hero-decoration-two"></span>
+            </div>
+        </section>
+
+        <section class="value-strip" id="why-northstar">
+            <div class="value-item">
+                <span class="value-icon">◇</span>
+                <div><strong>Useful technology</strong><small>Everyday essentials</small></div>
+            </div>
+            <div class="value-item">
+                <span class="value-icon">◎</span>
+                <div><strong>Clear information</strong><small>Details you can understand</small></div>
+            </div>
+            <div class="value-item">
+                <span class="value-icon">↩</span>
+                <div><strong>Helpful policies</strong><small>Know before you buy</small></div>
+            </div>
+            <div class="value-item">
+                <span class="value-icon">✦</span>
+                <div><strong>AI shopping support</strong><small>Answers in a conversation</small></div>
+            </div>
+        </section>
+
+        <section class="catalogue-section" id="products">
+            <div class="catalogue-heading">
+                <div>
+                    <div class="eyebrow">THE NORTHSTAR EDIT</div>
+                    <h2>Find your next essential.</h2>
+                    <p>Explore our technology and everyday accessories.</p>
+                </div>
+                <div class="catalogue-count"><strong>10</strong><span>selected products</span></div>
+            </div>
+
+            <div class="catalogue-tools">
+                <label class="search-box">
+                    <span aria-hidden="true">⌕</span>
+                    <input id="product-search" type="search" placeholder="Search products..." autocomplete="off">
+                    <kbd>/</kbd>
+                </label>
+                <div class="category-filters" role="group" aria-label="Filter products by category">
+                    <button class="filter-button active" type="button" data-category="all">All products</button>
+                    <button class="filter-button" type="button" data-category="computers">Computers</button>
+                    <button class="filter-button" type="button" data-category="accessories">Accessories</button>
+                    <button class="filter-button" type="button" data-category="audio">Audio</button>
+                    <button class="filter-button" type="button" data-category="storage">Storage</button>
+                </div>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                <article class="product-card" data-category="computers" data-name="HP EliteBook Laptop">
+                    <div class="product-art art-laptop">
+                        <span class="product-badge">Featured</span>
+                        <span class="product-art-icon">▱</span>
+                        <span class="art-caption">BUILT FOR PRODUCTIVITY</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">COMPUTERS</span>
+                        <h3>HP EliteBook Laptop</h3>
+                        <p>A dependable laptop for work and everyday productivity.</p>
+                        <div class="product-card-bottom"><strong>$850</strong><button class="ask-product" data-product="HP EliteBook Laptop" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="accessories" data-name="Wireless Mouse">
+                    <div class="product-art art-mouse">
+                        <span class="product-art-icon">◉</span>
+                        <span class="art-caption">MOVE WITH PRECISION</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">ACCESSORIES</span>
+                        <h3>Wireless Mouse</h3>
+                        <p>A simple wireless companion for your workspace.</p>
+                        <div class="product-card-bottom"><strong>$25</strong><button class="ask-product" data-product="Wireless Mouse" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="accessories" data-name="Mechanical Keyboard">
+                    <div class="product-art art-keyboard">
+                        <span class="product-art-icon">▦</span>
+                        <span class="art-caption">A BETTER TYPING FEEL</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">ACCESSORIES</span>
+                        <h3>Mechanical Keyboard</h3>
+                        <p>A practical keyboard for focused work and daily use.</p>
+                        <div class="product-card-bottom"><strong>$65</strong><button class="ask-product" data-product="Mechanical Keyboard" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="accessories" data-name="USB-C Hub 7-in-1">
+                    <div class="product-art art-hub">
+                        <span class="product-art-icon">⌘</span>
+                        <span class="art-caption">CONNECT MORE</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">ACCESSORIES</span>
+                        <h3>USB-C Hub 7-in-1</h3>
+                        <p>Expand your laptop connectivity with one compact hub.</p>
+                        <div class="product-card-bottom"><strong>$45</strong><button class="ask-product" data-product="USB-C Hub 7-in-1" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="computers" data-name="24-inch Full HD Monitor">
+                    <div class="product-art art-monitor">
+                        <span class="product-art-icon">▣</span>
+                        <span class="art-caption">MAKE ROOM FOR IDEAS</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">COMPUTERS</span>
+                        <h3>24-inch Full HD Monitor</h3>
+                        <p>A clear Full HD display for work and entertainment.</p>
+                        <div class="product-card-bottom"><strong>$160</strong><button class="ask-product" data-product="24-inch Full HD Monitor" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="audio" data-name="Noise-Cancelling Headphones">
+                    <div class="product-art art-headphones">
+                        <span class="product-art-icon">◖</span>
+                        <span class="art-caption">FIND YOUR FOCUS</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">AUDIO</span>
+                        <h3>Noise-Cancelling Headphones</h3>
+                        <p>Enjoy a more focused listening experience.</p>
+                        <div class="product-card-bottom"><strong>$95</strong><button class="ask-product" data-product="Noise-Cancelling Headphones" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="accessories" data-name="1080p USB Webcam">
+                    <div class="product-art art-webcam">
+                        <span class="product-art-icon">◎</span>
+                        <span class="art-caption">SHOW UP CLEARLY</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">ACCESSORIES</span>
+                        <h3>1080p USB Webcam</h3>
+                        <p>A Full HD webcam for meetings and video calls.</p>
+                        <div class="product-card-bottom"><strong>$40</strong><button class="ask-product" data-product="1080p USB Webcam" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="storage" data-name="1TB Portable SSD">
+                    <div class="product-art art-ssd">
+                        <span class="product-art-icon">▤</span>
+                        <span class="art-caption">KEEP IT CLOSE</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">STORAGE</span>
+                        <h3>1TB Portable SSD</h3>
+                        <p>Portable storage for files, projects, and backups.</p>
+                        <div class="product-card-bottom"><strong>$110</strong><button class="ask-product" data-product="1TB Portable SSD" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="accessories" data-name="Laptop Backpack">
+                    <div class="product-art art-backpack">
+                        <span class="product-art-icon">▱</span>
+                        <span class="art-caption">READY WHEN YOU ARE</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">ACCESSORIES</span>
+                        <h3>Laptop Backpack</h3>
+                        <p>A practical everyday bag for carrying your laptop.</p>
+                        <div class="product-card-bottom"><strong>$35</strong><button class="ask-product" data-product="Laptop Backpack" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="accessories" data-name="65W USB-C Laptop Charger">
+                    <div class="product-art art-charger">
+                        <span class="product-art-icon">ϟ</span>
+                        <span class="art-caption">POWER YOUR DAY</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">ACCESSORIES</span>
+                        <h3>65W USB-C Laptop Charger</h3>
+                        <p>A compact 65W charger for compatible USB-C laptops.</p>
+                        <div class="product-card-bottom"><strong>$30</strong><button class="ask-product" data-product="65W USB-C Laptop Charger" type="button">Ask about product <span>↗</span></button></div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="no-products" id="no-products" hidden>
+                <span>⌕</span>
+                <h3>No products found</h3>
+                <p>Try another search or choose a different category.</p>
+                <button class="button button-secondary" id="clear-filters" type="button">Clear filters</button>
+            </div>
+            <p class="catalogue-disclaimer">Product details and prices are for this demonstration catalogue. Ask Northstar Assistant for information about availability, warranties, and store policies.</p>
+        </section>
+
+        <section class="assistant-promo">
+            <div class="promo-symbol">✦</div>
+            <div class="promo-copy">
+                <span class="eyebrow">YOUR SHOPPING COMPANION</span>
+                <h2>Good questions make better choices.</h2>
+                <p>Ask about product details, pricing, delivery, returns, payments, and warranties in a simple conversation.</p>
+            </div>
+            <button class="button button-primary" id="banner-chat" type="button">Ask Northstar <span>↗</span></button>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <a class="brand footer-brand" href="#home">
+            <span class="brand-symbol">N</span>
+            <span class="brand-name">northstar<span>.</span></span>
+        </a>
+        <p>Technology for everyday life. Helpful answers when you need them.</p>
+        <span>© <span id="current-year"></span> Northstar</span>
+    </footer>
+
+    <div class="chat-widget">
+        <section class="chat-panel" id="chat-panel" aria-label="Northstar shopping assistant" aria-hidden="true">
+            <header class="chat-header">
+                <div class="chat-avatar">✦</div>
+                <div class="chat-heading">
+                    <strong>Northstar Assistant</strong>
+                    <span><i></i><span id="assistant-status">Here to help</span></span>
+                </div>
+                <button class="chat-close" id="chat-close" type="button" aria-label="Close assistant">×</button>
+            </header>
+
+            <div class="chat-welcome" id="chat-intro">
+                <div class="welcome-symbol">✦</div>
+                <span class="welcome-eyebrow">NORTHSTAR SHOPPING SUPPORT</span>
+                <h3>How can I help you today?</h3>
+                <p>Ask me about our products or anything you need to know before placing an order.</p>
+                <div class="quick-prompts">
+                    <button type="button" data-question="What products do you have?">Explore the products <span>↗</span></button>
+                    <button type="button" data-question="What is the warranty on the HP EliteBook Laptop?">Ask about warranties <span>↗</span></button>
+                    <button type="button" data-question="What is your return and refund policy?">Returns and refunds <span>↗</span></button>
+                    <button type="button" data-question="What are your shipping and delivery options?">Shipping information <span>↗</span></button>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chat-messages" aria-live="polite" aria-relevant="additions"></div>
+            <div class="chat-error" id="chat-error" role="alert" hidden></div>
+
+            <form class="chat-composer" id="chat-form">
+                <textarea id="question-input" name="question" rows="1" maxlength="1000"
+                          placeholder="Ask anything about Northstar..." aria-label="Your message" required></textarea>
+                <button id="send-button" type="submit" aria-label="Send message">
+                    <span>↑</span>
+                </button>
+            </form>
+            <div class="chat-footnote">Northstar AI · Helpful answers, made simple</div>
+        </section>
+
+        <button class="chat-launcher" id="chat-launcher" type="button"
+                aria-label="Open Northstar assistant" aria-expanded="false">
+            <span class="launcher-spark">✦</span>
+            <span class="launcher-text">Ask Northstar</span>
+            <span class="launcher-close">×</span>
+        </button>
+    </div>
+</body>
+</html>
